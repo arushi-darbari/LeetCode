@@ -1,9 +1,14 @@
 from collections import defaultdict
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-         anagram=defaultdict(list)
-         for value in strs:
-            sorted_s=tuple(sorted(value))
-            anagram[sorted_s].append(value)
+        anagram=defaultdict(list)
+        result=[]
+        for index, value in enumerate(strs):
+            key=tuple(sorted(value))
+            anagram[key].append(value)
         
-         return list(anagram.values())
+        result=list(anagram.values())
+
+        return result
+            
+        
