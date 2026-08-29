@@ -1,14 +1,12 @@
+from collections import defaultdict
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        left=0
-        right= len(numbers)-1
-        while (left<right):
-            if numbers[left]+numbers[right]==target:
-                return [left+1,right+1]
+        seen=defaultdict(int)
+        for i, value in enumerate(numbers):
+            balance=target-value
+            if balance in seen:
+                return [seen[balance]+1,i+1]
+
+            seen[value]=i
+
             
-            elif numbers[left]+numbers[right]<target:
-                left+=1
-            
-            else:
-                right-=1
-        
